@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+.st-emotion-cache-h4xjwg{ /* NAVBAR DO HEADER */
+    align-items: center; /*apenas te.ste para não ficar com erro no código*/
+}
+
+.st-emotion-cache-13k62yr {
+    margin-top: -2em;
+}
+/*
+.st-ae {  classe para arrumar tamanho do campo de informar período 
+    width: 12.5rem;
+    font-size: 15px;
+}
+
+.st-emotion-cache-qcpnpn .e1f1d6gn0{
+    
+}
+*/
+.container {
+    background-color: black;
+}
+
+.title { /* TITULO PRESENTE DENTRO DO CONTAINER PRINCIPAL */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-size: 24px;
+    border: none;
+}
+
+.title2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-size: 24px;
+    border: none;
+    /* padding: 100px 0px; */
+    margin-top: 10px;
+}
+
+.vrheader{
+    display: flex;
+    justify-content:center;
+    font-size: 64px;
+    align-items: center;
+    color:#fc6b03;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif
+}
+
+.custom-multiselect .stSelectbox [class*="css-"], 
+.custom-multiselect .stMultiSelect [class*="css-"] {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.custom-multiselect .stSelectbox .st-bs, 
+.custom-multiselect .stMultiSelect .st-bs {
+    max-width: 200px; /* Ajuste a largura conforme necessário */
+}
+
+.custom-multiselect .stMultiSelect [class*="css-"] div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stDataFrame div {
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    color: #333;
+}
+.stDataFrame th {
+    background-color: #ffa500 !important;
+    color: white;
+}
+.stDataFrame tbody tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+.stDataFrame tbody tr:nth-child(odd) {
+    background-color: #e0e0e0;
+}
+.stDataFrame tbody tr:hover {
+    background-color: #d0d0d0;
+}
+.stDataFrame {
+    height: 600px;
+    width: 1000px;
+}
+
+.st-emotion-cache-1pbsqtx{
+    display: none;
+}
+
+.st-emotion-cache-6q9sum{
+    display: none;
+}
+
+.st-emotion-cache-vxrsrn{
+    display: none;
+}
+
+.st-emotion-cache-h4xjwg{
+    display: none;
+}
+
+.st-au{
+    cursor: pointer;
+} 
+
+.st-emotion-cache-luriig{
+    display: none;
+}
+
+/* .st-emotion-cache-qcpnpn .e1f1d6gn0 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+} */

@@ -1,0 +1,49 @@
+IMPORTAÇÃO DE TICKETS CSV PARA O BANCO DE DADOS
+
+--- IMPORTANTE: PEGAR survey_results.csv E COLOCAR NA PASTA C:/TEMP
+
+-- CRIAR TABELA TEMPORÁRIA
+CREATE TEMP TABLE temp_tickets AS TABLE tickets WITH NO DATA;
+
+-- COPIAR PRIMEIRO PARA TABELA TEMPORÁRIA (EVITAR DUPLICIDADES)
+COPY temp_tickets FROM 'C:/temp/survey_results.csv' 
+WITH (FORMAT csv, HEADER true, DELIMITER ',');
+
+
+-- INSERIR NA TABELA PRINCIPAL APENAS OS ATUALIZADOS
+INSERT INTO tickets (
+    ticket_id, createdDate, status, category, resolvedInFirstCall, urgency, 
+    chatWaitingTime, chatTalkTime, serviceFirstLevel, serviceSecondLevel, serviceThirdLevel, 
+    lifeTimeWorkingTime, organization, analyst, createdBy, type, value, comment
+)
+SELECT 
+    ticket_id, createdDate, status, category, resolvedInFirstCall, urgency, 
+    chatWaitingTime, chatTalkTime, serviceFirstLevel, serviceSecondLevel, serviceThirdLevel, 
+    lifeTimeWorkingTime, organization, analyst, createdBy, type, value, comment
+FROM (
+    SELECT DISTINCT ON (ticket_id) 
+        ticket_id, createdDate, status, category, resolvedInFirstCall, urgency, 
+        chatWaitingTime, chatTalkTime, serviceFirstLevel, serviceSecondLevel, serviceThirdLevel, 
+        lifeTimeWorkingTime, organization, analyst, createdBy, type, value, comment
+    FROM temp_tickets
+    ORDER BY ticket_id, createdDate DESC  -- Garantindo que o mais recente seja escolhido
+) AS subquery
+ON CONFLICT (ticket_id) 
+DO UPDATE SET 
+    createdDate = EXCLUDED.createdDate,
+    status = EXCLUDED.status,
+    category = EXCLUDED.category,
+    resolvedInFirstCall = EXCLUDED.resolvedInFirstCall,
+    urgency = EXCLUDED.urgency,
+    chatWaitingTime = EXCLUDED.chatWaitingTime,
+    chatTalkTime = EXCLUDED.chatTalkTime,
+    serviceFirstLevel = EXCLUDED.serviceFirstLevel,
+    serviceSecondLevel = EXCLUDED.serviceSecondLevel,
+    serviceThirdLevel = EXCLUDED.serviceThirdLevel,
+    lifeTimeWorkingTime = EXCLUDED.lifeTimeWorkingTime,
+    organization = EXCLUDED.organization,
+    analyst = EXCLUDED.analyst,
+    createdBy = EXCLUDED.createdBy,
+    type = EXCLUDED.type,
+    value = EXCLUDED.value,
+    comment = EXCLUDED.comment;

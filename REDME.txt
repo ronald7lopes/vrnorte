@@ -1,0 +1,1 @@
+-- check_survey:: da linha 21 a 24: valida as notas modificadas do Mês, o padrão atual é por dia.
