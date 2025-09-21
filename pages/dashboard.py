@@ -38,8 +38,14 @@ def run():
             with open("ticket_count.json", "w") as file:
                 json.dump(data, file)
 
-    with open(".\\styles\\style.css") as f:
+    # with open(".\\styles\\style.css") as f:
+    #     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+    style_path = os.path.join(os.path.dirname(__file__), "..", "styles", "style.css")
+    with open(style_path) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
 
     st.markdown("<header class='vrheader'>VR BELÉM</header>", unsafe_allow_html=True)
 
